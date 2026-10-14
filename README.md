@@ -21,20 +21,20 @@ I picked 200 boundary-time cases in 2026 and entered the same date, time, and lo
 | Ordinary hour-pillar boundaries | 40 |
 | **Total** | **200** |
 
-How the cases were chosen and how I read the results is in `docs/methodology.md`.
+How the cases were chosen and how I read the results is in [`docs/methodology.md`](docs/methodology.md).
 
 ## Reproducible 200-case benchmark
 
 If you want to run your own calculator against the same kind of inputs, use these:
 
-- `data/reconstructed_cases_200.csv`
-- `docs/reconstructed_dataset.md`
+- [`data/reconstructed_cases_200.csv`](data/reconstructed_cases_200.csv)
+- [`docs/reconstructed_dataset.md`](docs/reconstructed_dataset.md)
 
-The solar-term rows come from the official 2026 calendar data published by the Korea Astronomy and Space Science Institute (KASI). The other rows are generated from rules written out in the doc, so anyone can rebuild them.
+The solar-term rows come from the [official 2026 calendar data](https://astro.kasi.re.kr/kor/life/post/calendarData?year=2026) published by the Korea Astronomy and Space Science Institute (KASI). The other rows are generated from rules written out in the doc, so anyone can rebuild them.
 
 One thing to be clear about: this CSV keeps the same 120 + 40 + 40 split as the original study, but it is a reconstruction. It is not the exact raw row set from the published comparison.
 
-Each row also carries the woori.to result (`woori_year_pillar`, `woori_month_pillar`, `woori_day_pillar`, `woori_hour_pillar`, `woori_four_pillars`) and the −30 minute basis used for the hour calculation. The details are in `docs/reconstructed_dataset.md`.
+Each row also carries the woori.to result (`woori_year_pillar`, `woori_month_pillar`, `woori_day_pillar`, `woori_hour_pillar`, `woori_four_pillars`) and the −30 minute basis used for the hour calculation. The details are in [`docs/reconstructed_dataset.md`](docs/reconstructed_dataset.md).
 
 ## Results
 
@@ -60,7 +60,7 @@ The Zi-hour band is the one that stood out to me. 33 out of 40 is far worse than
 
 Every single disagreement in the 200 cases involved the hour pillar. The day pillar differed in 31 of them.
 
-Aggregates in machine-readable form: `data/summary.csv`.
+Aggregates in machine-readable form: [`data/summary.csv`](data/summary.csv).
 
 ## The case that split four ways: 2026-02-11 23:45, Seoul
 
@@ -75,7 +75,7 @@ Year and month never moved. Everything happened in the day and hour. My reading 
 
 So one birth time, four charts, and you could defend most of them depending on which school you follow. That's exactly why I think a calculator should tell users which rule it's using instead of just printing a chart.
 
-Raw data: `data/notable_case_2026-02-11_2345.csv`.
+Raw data: [`data/notable_case_2026-02-11_2345.csv`](data/notable_case_2026-02-11_2345.csv).
 
 ## Where the differences come from
 
@@ -93,10 +93,10 @@ A different chart doesn't automatically mean someone has a bug. In a lot of thes
 
 ## Original research
 
-The full write-up in Korean is on 난강망 사주해설집 (woori.to):
+The full write-up in Korean is on [난강망 사주해설집 (woori.to)](https://woori.to/):
 
-- 만세력 10곳에 같은 경계시간 200개를 넣어봤습니다
-- 직접 만세력을 만들면서 실제로 틀렸던 계산 10가지 — 2026년 525,600분 검증
+- [만세력 10곳에 같은 경계시간 200개를 넣어봤습니다](https://woori.to/entry/다른-만세력-사이트-10곳에-똑같은-경계시간-200개를-넣어봤습니다)
+- [직접 만세력을 만들면서 실제로 틀렸던 계산 10가지 — 2026년 525,600분 검증](https://woori.to/entry/직접-만세력을-만들면서-실제로-틀렸던-계산-10가지)
 
 ## What data is in here
 
@@ -110,7 +110,7 @@ I have not filled in per-service outputs for the original 10-service comparison,
 
 ## Reuse and citation
 
-If you use or discuss these results, please link both this repository and the original article on woori.to.
+If you use or discuss these results, please link both this repository and the [original article on woori.to](https://woori.to/entry/다른-만세력-사이트-10곳에-똑같은-경계시간-200개를-넣어봤습니다).
 
 ## Scope
 
