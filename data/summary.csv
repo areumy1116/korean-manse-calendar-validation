@@ -1,0 +1,11 @@
+metric,category,total_cases,disagreement_cases,agreement_cases,rate_percent,notes
+overall,all,200,89,111,44.5,"Boundary-focused sample; not a population-wide disagreement rate"
+boundary_type,solar_term,120,39,81,32.5,"Cases around 12 monthly solar-term transitions"
+boundary_type,zi_hour_day_boundary,40,33,7,82.5,"Cases around 23:00 through midnight"
+boundary_type,ordinary_hour_pillar,40,17,23,42.5,"Cases around ordinary hour-pillar boundaries"
+result_variants,one_distinct_chart,200,0,111,55.5,"111 cases produced the same chart across all 10 rule sets"
+result_variants,two_distinct_charts,200,58,,29.0,"58 cases produced two distinct chart results"
+result_variants,three_distinct_charts,200,30,,15.0,"30 cases produced three distinct chart results"
+result_variants,four_distinct_charts,200,1,,0.5,"One case produced four distinct chart results"
+pillar_difference,hour_pillar,200,89,111,44.5,"Every disagreement case included an hour-pillar difference"
+pillar_difference,day_pillar,200,31,169,15.5,"31 cases included a day-pillar difference"
