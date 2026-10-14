@@ -31,6 +31,8 @@ The solar-term portion uses official 2026 calendar data from the **Korea Astrono
 
 This reconstructed CSV follows the same 120 + 40 + 40 boundary-focused design, but it is **not presented as the exact original raw row set** from the published comparison.
 
+Every row now also includes the reconstructed **woori.to Four Pillars result** (`woori_year_pillar`, `woori_month_pillar`, `woori_day_pillar`, `woori_hour_pillar`, and `woori_four_pillars`) plus the -30 minute hour-calculation basis. The exact rules are documented in [docs/reconstructed_dataset.md](docs/reconstructed_dataset.md).
+
 ## Aggregate results
 
 | Result | Cases |
@@ -96,7 +98,7 @@ This repository contains three different kinds of data:
 
 1. **Published-study aggregates** — verified totals from the original woori.to comparison.
 2. **Representative observed case** — the documented 2026-02-11 23:45 four-result example.
-3. **Reconstructed 200-case benchmark** — newly generated, reproducible input rows based on documented boundary-selection rules.
+3. **Reconstructed 200-case benchmark** — newly generated, reproducible input rows based on documented boundary-selection rules, with woori.to-rule Four Pillars outputs filled for all 200 rows.
 
 The repository does **not** invent the missing per-service outputs from the original 10-service comparison. Those should only be added after rerunning the services/rule sets or recovering the original raw results.
 
