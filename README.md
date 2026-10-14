@@ -20,6 +20,17 @@ The purpose is **not** to rank services or declare one tradition universally cor
 
 See [docs/methodology.md](docs/methodology.md) for the selection method and interpretation rules.
 
+## Reproducible 200-case benchmark
+
+A separate **reconstructed, reproducible 200-row input dataset** is available at:
+
+- [data/reconstructed_cases_200.csv](data/reconstructed_cases_200.csv)
+- [docs/reconstructed_dataset.md](docs/reconstructed_dataset.md)
+
+The solar-term portion uses official 2026 calendar data from the **Korea Astronomy and Space Science Institute (KASI)**. The remaining boundary rows are generated from explicitly documented rules.
+
+This reconstructed CSV follows the same 120 + 40 + 40 boundary-focused design, but it is **not presented as the exact original raw row set** from the published comparison.
+
 ## Aggregate results
 
 | Result | Cases |
@@ -81,9 +92,13 @@ The detailed Korean-language analysis is published at **난강망 사주해설�
 
 ## Data availability
 
-This repository currently publishes **verified aggregate results and a documented representative case** from the original study.
+This repository contains three different kinds of data:
 
-The complete 200-row raw case table is intentionally **not reconstructed from memory or inferred values**. It should be added only from the original source data so the repository remains reproducible and accurate.
+1. **Published-study aggregates** — verified totals from the original woori.to comparison.
+2. **Representative observed case** — the documented 2026-02-11 23:45 four-result example.
+3. **Reconstructed 200-case benchmark** — newly generated, reproducible input rows based on documented boundary-selection rules.
+
+The repository does **not** invent the missing per-service outputs from the original 10-service comparison. Those should only be added after rerunning the services/rule sets or recovering the original raw results.
 
 ## Reuse and citation
 
