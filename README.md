@@ -1,111 +1,117 @@
 # Korean Manse Calendar Validation
 
-Public validation notes and aggregate data for boundary-time behavior in Korean Four Pillars (Saju / Bazi) calendar calculations.
+Validation notes and aggregate data on how Korean Four Pillars (Saju / Bazi) calendars behave at boundary times.
 
-한국 사주 만세력에서 **절입, 자시·자정, 시주 경계**처럼 결과가 갈리기 쉬운 시각을 동일 조건으로 비교한 검증 자료입니다.
+한국 사주 만세력에서 절입, 자시·자정, 시주 경계처럼 결과가 갈리기 쉬운 시각만 골라 같은 조건으로 넣어 보고, 어디서 얼마나 달라지는지 기록한 자료입니다.
 
-## What this repository covers
+## Why I made this
 
-The original study selected **200 boundary-time cases in 2026** and applied the same date, time, and location (Seoul) across 10 published calculation-rule sets.
+I started this while building my own Manse calendar. Every time I checked my output against existing services, the mismatches showed up in the same few places: right around a solar-term change, late at night near 23:00, and at the edge of an hour pillar. I wanted to know whether those mismatches were bugs or just different rules, so I stopped spot-checking and ran a proper comparison.
 
-The purpose is **not** to rank services or declare one tradition universally correct. It is to show how different time-correction and day-boundary rules can produce different Four Pillars charts near calculation boundaries.
+This is not a ranking of services. I don't think any single tradition gets to call itself the correct one. What I wanted to show is how much the chart can move depending on the time-correction and day-boundary rules a calculator picks.
 
-### Test design
+## What was tested
 
-- Solar-term (절입) boundaries: **120 cases**
-- 23:00–00:00 / Zi-hour and day-boundary cases: **40 cases**
-- Ordinary hour-pillar boundaries: **40 cases**
-- Total: **200 cases**
-- Location: **Seoul, Republic of Korea**
+I picked 200 boundary-time cases in 2026 and entered the same date, time, and location (Seoul) into 10 published calculation-rule sets.
 
-See [docs/methodology.md](docs/methodology.md) for the selection method and interpretation rules.
+| Boundary type | Cases |
+|---|---|
+| Solar-term (절입) boundaries | 120 |
+| 23:00–00:00 / Zi-hour and day boundary | 40 |
+| Ordinary hour-pillar boundaries | 40 |
+| **Total** | **200** |
+
+How the cases were chosen and how I read the results is in `docs/methodology.md`.
 
 ## Reproducible 200-case benchmark
 
-A separate **reconstructed, reproducible 200-row input dataset** is available at:
+If you want to run your own calculator against the same kind of inputs, use these:
 
-- [data/reconstructed_cases_200.csv](data/reconstructed_cases_200.csv)
-- [docs/reconstructed_dataset.md](docs/reconstructed_dataset.md)
+- `data/reconstructed_cases_200.csv`
+- `docs/reconstructed_dataset.md`
 
-The solar-term portion uses official 2026 calendar data from the **Korea Astronomy and Space Science Institute (KASI)**. The remaining boundary rows are generated from explicitly documented rules.
+The solar-term rows come from the official 2026 calendar data published by the Korea Astronomy and Space Science Institute (KASI). The other rows are generated from rules written out in the doc, so anyone can rebuild them.
 
-This reconstructed CSV follows the same 120 + 40 + 40 boundary-focused design, but it is **not presented as the exact original raw row set** from the published comparison.
+One thing to be clear about: this CSV keeps the same 120 + 40 + 40 split as the original study, but it is a reconstruction. It is not the exact raw row set from the published comparison.
 
-Every row now also includes the reconstructed **woori.to Four Pillars result** (`woori_year_pillar`, `woori_month_pillar`, `woori_day_pillar`, `woori_hour_pillar`, and `woori_four_pillars`) plus the -30 minute hour-calculation basis. The exact rules are documented in [docs/reconstructed_dataset.md](docs/reconstructed_dataset.md).
+Each row also carries the woori.to result (`woori_year_pillar`, `woori_month_pillar`, `woori_day_pillar`, `woori_hour_pillar`, `woori_four_pillars`) and the −30 minute basis used for the hour calculation. The details are in `docs/reconstructed_dataset.md`.
 
-## Aggregate results
+## Results
 
 | Result | Cases |
-|---|---:|
-| All 10 rule sets produced the same chart | 111 |
-| Two distinct chart results | 58 |
-| Three distinct chart results | 30 |
-| Four distinct chart results | 1 |
-| Cases with any disagreement | **89 / 200 (44.5%)** |
+|---|---|
+| All 10 rule sets gave the same chart | 111 |
+| Two different charts | 58 |
+| Three different charts | 30 |
+| Four different charts | 1 |
+| Any disagreement | 89 / 200 (44.5%) |
 
-This **44.5% is not a population-wide disagreement rate**. The sample deliberately concentrates on times where disagreement is most likely.
+Please don't quote 44.5% as "how often Manse calendars disagree." I deliberately loaded the sample with the times where disagreement is most likely. On an ordinary afternoon birth time, almost every calculator will agree.
 
-### Disagreement by boundary type
+### By boundary type
 
-| Boundary type | Total cases | Cases with disagreement |
-|---|---:|---:|
+| Boundary type | Total | With disagreement |
+|---|---|---|
 | Solar-term boundaries | 120 | 39 |
 | 23:00–00:00 / Zi-hour boundary | 40 | 33 |
 | Ordinary hour-pillar boundaries | 40 | 17 |
 
-Across all 200 cases, every chart disagreement included an **hour-pillar difference**. A **day-pillar difference** appeared in 31 cases.
+The Zi-hour band is the one that stood out to me. 33 out of 40 is far worse than I expected going in. Solar-term cases, which I assumed would be the messiest, actually held together better.
 
-Machine-readable aggregates are in [data/summary.csv](data/summary.csv).
+Every single disagreement in the 200 cases involved the hour pillar. The day pillar differed in 31 of them.
 
-## Notable case: 2026-02-11 23:45, Seoul
+Aggregates in machine-readable form: `data/summary.csv`.
 
-One test case produced **four distinct charts** under the 10 rule sets:
+## The case that split four ways: 2026-02-11 23:45, Seoul
 
-| Count | Four Pillars |
-|---:|---|
+| Rule sets | Four Pillars |
+|---|---|
 | 4 | 丙午 庚寅 丙辰 己亥 |
 | 3 | 丙午 庚寅 丙辰 戊子 |
 | 2 | 丙午 庚寅 丁巳 庚子 |
 | 1 | 丙午 庚寅 丙辰 庚子 |
 
-See [data/notable_case_2026-02-11_2345.csv](data/notable_case_2026-02-11_2345.csv).
+Year and month never moved. Everything happened in the day and hour. My reading of it: the four sets that returned 己亥 corrected the clock time far enough back that 23:45 never reached Zi hour. The two sets with 丁巳 庚子 switch the day at the start of Zi hour. The single 丙辰 庚子 result keeps the day as 丙辰 but takes the hour stem from the next day, which is the 야자시 approach. The 丙辰 戊子 group keeps both on the current day.
 
-## Why the results can differ
+So one birth time, four charts, and you could defend most of them depending on which school you follow. That's exactly why I think a calculator should tell users which rule it's using instead of just printing a chart.
 
-The observed differences were associated with combinations of:
+Raw data: `data/notable_case_2026-02-11_2345.csv`.
 
-- using clock time as entered
-- fixed longitude/time correction (for example, roughly 30 minutes)
-- local longitude correction
-- equation-of-time / true-solar-time treatment
-- when Zi hour (子時) begins
-- when the day pillar changes
-- whether solar-term boundaries are applied at the exact time rather than by calendar date only
+## Where the differences come from
 
-A different result does not automatically mean a programming error; some outputs reflect different rule choices.
+The splits I saw traced back to some mix of these choices:
+
+- taking the clock time as entered, with no correction
+- applying a fixed correction (around 30 minutes for Seoul)
+- correcting by local longitude
+- applying the equation of time / true solar time
+- where Zi hour (子時) is taken to start
+- when the day pillar rolls over
+- whether a solar-term change is applied at its exact minute or just by calendar date
+
+A different chart doesn't automatically mean someone has a bug. In a lot of these cases the code is doing exactly what it was designed to do. The design choices are just different.
 
 ## Original research
 
-The detailed Korean-language analysis is published at **난강망 사주해설집 (woori.to)**.
+The full write-up in Korean is on 난강망 사주해설집 (woori.to):
 
-- [만세력 10곳에 같은 경계시간 200개를 넣어봤습니다](https://woori.to/entry/다른-만세력-사이트-10곳에-똑같은-경계시간-200개를-넣어봤습니다)
-- [직접 만세력을 만들면서 실제로 틀렸던 계산 10가지 — 2026년 525,600분 검증](https://woori.to/entry/직접-만세력을-만들면서-실제로-틀렸던-계산-10가지)
-- [난강망 사주해설집](https://woori.to/)
+- 만세력 10곳에 같은 경계시간 200개를 넣어봤습니다
+- 직접 만세력을 만들면서 실제로 틀렸던 계산 10가지 — 2026년 525,600분 검증
 
-## Data availability
+## What data is in here
 
-This repository contains three different kinds of data:
+There are three kinds, and they shouldn't be mixed up:
 
-1. **Published-study aggregates** — verified totals from the original woori.to comparison.
-2. **Representative observed case** — the documented 2026-02-11 23:45 four-result example.
-3. **Reconstructed 200-case benchmark** — newly generated, reproducible input rows based on documented boundary-selection rules, with woori.to-rule Four Pillars outputs filled for all 200 rows.
+1. **Published-study aggregates**: the verified totals from the original woori.to comparison.
+2. **One observed case**: the 2026-02-11 23:45 example above, documented as it came out.
+3. **Reconstructed 200-case benchmark**: new, reproducible input rows built from the documented selection rules, with woori.to-rule outputs filled in for all 200.
 
-The repository does **not** invent the missing per-service outputs from the original 10-service comparison. Those should only be added after rerunning the services/rule sets or recovering the original raw results.
+I have not filled in per-service outputs for the original 10-service comparison, and I won't make them up. They'll go in only after the services are rerun or the original raw results are recovered.
 
 ## Reuse and citation
 
-If you discuss or reuse these results, please link to this repository and the corresponding original research article at **woori.to**.
+If you use or discuss these results, please link both this repository and the original article on woori.to.
 
 ## Scope
 
-These results apply to the stated 2026 test design and the calculation rules compared in the original study. They should not be interpreted as a universal error rate for all Manse calendars, all years, or all Saju traditions.
+Everything here applies to the 2026 test design and the rule sets compared in the original study. It isn't an error rate for all Manse calendars, all years, or all Saju traditions.
