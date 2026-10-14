@@ -30,7 +30,7 @@ If you want to run your own calculator against the same kind of inputs, use thes
 - [`data/reconstructed_cases_200.csv`](data/reconstructed_cases_200.csv)
 - [`docs/reconstructed_dataset.md`](docs/reconstructed_dataset.md)
 
-The solar-term rows come from the [official 2026 calendar data](https://astro.kasi.re.kr/kor/life/post/calendarData?year=2026) published by the Korea Astronomy and Space Science Institute (KASI). The other rows are generated from rules written out in the doc, so anyone can rebuild them.
+The solar-term rows come from the [2026 calendar data](https://astro.kasi.re.kr/kor/life/post/calendarData?year=2026) published by the Korea Astronomy and Space Science Institute (KASI). The other rows are generated from rules written out in the doc, so anyone can rebuild them.
 
 One thing to be clear about: this CSV keeps the same 120 + 40 + 40 split as the original study, but it is a reconstruction. It is not the exact raw row set from the published comparison.
 
