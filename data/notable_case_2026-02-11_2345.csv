@@ -1,0 +1,5 @@
+case_id,date,time,location,chart,count,notes
+notable-2026-02-11-2345,2026-02-11,23:45,"Seoul, Republic of Korea","丙午 庚寅 丙辰 己亥",4,"Most common result among the 10 compared rule sets"
+notable-2026-02-11-2345,2026-02-11,23:45,"Seoul, Republic of Korea","丙午 庚寅 丙辰 戊子",3,"Distinct hour-pillar handling"
+notable-2026-02-11-2345,2026-02-11,23:45,"Seoul, Republic of Korea","丙午 庚寅 丁巳 庚子",2,"Day-pillar and hour-pillar both differ"
+notable-2026-02-11-2345,2026-02-11,23:45,"Seoul, Republic of Korea","丙午 庚寅 丙辰 庚子",1,"Least common of the four observed results"
